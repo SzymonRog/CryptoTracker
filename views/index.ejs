@@ -3,13 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>CryptoTracker</title>
-        
-        <link rel="stylesheet" href="style.css">
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/output.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
-    <body>
-    <h1 class="text-blue-500 text-xl">Wszystko działa!!</h1>
+    <body class="bg-s">
+    <main>
+        <section>
+            <div class="flex justify-center items-center my-10 p-4 h-full">
+                <div class="grid h-[700px] w-[900px] grid-cols-3 grid-rows-4 gap-4">
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-3"><h1>Hej tam</h1></div>
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2"></div>
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl  col-span-2"></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 <%- include("./propeties/footer.ejs") %>
         
