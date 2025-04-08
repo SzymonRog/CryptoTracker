@@ -6,17 +6,28 @@
         <link rel="stylesheet" href="styles/output.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
-    <body class="bg-s">
+    <body class="bg-gray-100">
     <main>
         <section>
-            <div class="flex justify-center items-center my-10 p-4 h-full">
+            <div class="flex justify-center items-center my-10  h-full">
                 <div class="grid h-[700px] w-[900px] grid-cols-3 grid-rows-4 gap-4">
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-3"><h1>Hej tam</h1></div>
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2"></div>
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl  col-span-2"></div>
+
+                    <div class="h-full w-52 rounded-xl bg-white shadow-xl row-span-3 p-6 justify-self-end flex flex-col gap-2 ">
+                        <h2 class="font-inter font-medium text-3xl text-gray-900 text-center mb-4">Coin list</h2>
+                        <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 p-3"><img src="images/svg/currency-bitcoin.svg" alt="bitcoin logo"><h3 class="text-gray-900 text-xl">Bitcoin</h3></div>
+                        <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 p-3"><img src="images/svg/currency-ethereum.svg" alt=" etherium logo"><h3 class="text-gray-900 text-xl" >Etherium</h3></div>
+                        <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 p-3"><img src="images/svg/currency-solana.svg" alt="solana logo"><h3 class="text-gray-600 text-xl">Solana</h3></div>
+                    </div>
+
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl p-6"><h2 class="text-gray-600 text-xl text-center">Current price</h2><h3 class="text-gray-900 text-4xl text-center mt-5">100 923$</h3></div>
+
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl p-6"><h2 class="text-gray-600 text-xl text-center">Change - 24h</h2></div>
+
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2 p-6"><canvas></canvas></div>
+
+                    <div class="h-full w-52 rounded-xl bg-white shadow-xl justify-self-end p-6"><h2 class="text-center text-gray-600 text-xl">Market cap</h2><h3 class="text-gray-900 text-2xl text-center mt-5">100 564 923$</h3></div>
+
+                    <div class="h-full w-full rounded-xl bg-white shadow-xl col-span-2"></div>
                 </div>
             </div>
         </section>
