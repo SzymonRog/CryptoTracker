@@ -12,23 +12,47 @@
         <section>
             <div class="flex justify-center items-center my-6  h-full p-6">
                 <div class="grid lg:h-[700px] lg:w-[900px] h-[800px] w-[700px] grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-4 lg:ml-[-50px]">
-
+                    
                     <div class="h-full lg:w-52 w-full rounded-xl bg-white shadow-xl lg:row-span-3 lg:col-span-1 col-span-2 p-6 md:pt-6 pt-3 justify-self-end flex lg:flex-col flex-row lg:gap-2  flex-wrap">
                         <h2 class="font-inter font-medium lg:text-3xl text-2xl text-gray-900 lg:text-center lg:mb-4 mb-1 w-full">Coin list</h2>
                         <div class="flex gap-3 rounded-md hover:bg-gray-200 hover:shadow pl-4 lg:p-3 p-2 btn crypto" id="Bitcoin"><img src="images/svg/currency-bitcoin.svg" alt="bitcoin logo"><h3 class="text-gray-900 text-xl" >Bitcoin</h3></div>
-                        <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 lg:p-3 p-2 btn crypto" id="Etherium"><img src="images/svg/currency-ethereum.svg" alt=" etherium logo"><h3 class="text-gray-900 text-xl " >Etherium</h3></div>
+                        <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 lg:p-3 p-2 btn crypto" id="Ethereum"><img src="images/svg/currency-ethereum.svg" alt=" Ethereum logo"><h3 class="text-gray-900 text-xl " >Ethereum</h3></div>
                         <div class="flex gap-4 rounded-md hover:bg-gray-200 hover:shadow pl-4 lg:p-3 p-2 btn crypto" id="Solana"><img src="images/svg/currency-solana.svg" alt="solana logo"><h3 class="text-gray-600 text-xl" >Solana</h3></div>
                     </div>
+                    
+                    
+                    <% if(locals.content !== undefined) {%>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Current price</h2><h3 class="text-gray-900 md:text-4xl text-3xl text-center mt-5"><%=locals.content.current_price.toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                          }) %>$</h3></div>
+                    
 
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Current price</h2><h3 class="text-gray-900 md:text-4xl text-3xl text-center mt-5">100 923$</h3></div>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Change - 24h</h2><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-right-icon lucide-arrow-down-right mt-4"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg><h3 class="text-gray-900 md:text-4xl text-3xl md:text-center text-start mt-5 ml-3"><%=locals.content.price_change_24h.toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                          }) %>$</h3></div></div>
 
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Change - 24h</h2><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-right-icon lucide-arrow-down-right mt-4"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg><h3 class="text-gray-900 md:text-4xl text-3xl md:text-center text-start mt-5 ml-3">-1045$</h3></div></div>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2  p-6"><canvas></canvas></div>
 
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2  p-6"><canvas></canvas></div>
+                        <div class="h-full lg:w-[513.328px] w-full rounded-xl bg-white shadow-xl justify-self-end p-6 lg:col-span-2 col-span-1"><h2 class="text-center text-gray-600 text-xl">Market cap</h2><h3 class="text-gray-900 text-2xl text-center mt-5"><%=locals.content.market_cap.toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                          }) %>$</h3></div>
 
-                    <div class="h-full lg:w-52 w-full rounded-xl bg-white shadow-xl justify-self-end p-6"><h2 class="text-center text-gray-600 text-xl">Market cap</h2><h3 class="text-gray-900 text-2xl text-center mt-5">100 564 923$</h3></div>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
+                    <% } else { %>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Current price</h2><h3 class="text-gray-900 md:text-4xl text-3xl text-center mt-5"></h3></div>
+                    
 
-                    <div class="h-full w-full rounded-xl bg-white shadow-xl lg:col-span-2 col-span-1"></div>
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl md:p-6 p-4"><h2 class="text-gray-600 text-xl text-center">Change - 24h</h2><div class="flex"><h3 class="text-gray-900 md:text-4xl text-3xl md:text-center text-start mt-5 ml-3"></h3></div></div>
+
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl row-span-2 col-span-2  p-6"><canvas></canvas></div>
+
+                        <div class="h-full lg:w-[513.328px] w-full rounded-xl bg-white shadow-xl justify-self-end p-6 lg:col-span-2 col-span-1"><h2 class="text-center text-gray-600 text-xl">Market cap</h2><h3 class="text-gray-900 text-2xl text-center mt-5"></h3></div>
+
+                        <div class="h-full w-full rounded-xl bg-white shadow-xl"></div>
+                    <% } %>
                 </div>
             </div>
         </section>
