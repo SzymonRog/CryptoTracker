@@ -20,7 +20,6 @@ app.get("/",(req,res)=>{
 
 app.get("/crypto", async (req,res) =>{
     let divId = (req.query.id).toLowerCase();
-    console.log(divId);
     try{
         const result = await axios.get(`https://api.coingecko.com/api/v3/coins/markets`,{
         headers:{
@@ -32,12 +31,26 @@ app.get("/crypto", async (req,res) =>{
         }
         }
         )
+
+        const chartResult = await axios.get(`https://api.coingecko.com/api/v3/coins/${divId}/market_chart`,{
+            headers:{
+                'x-cg-demo-api-key': apiKey,
+            },
+            params: {
+                vs_currency: 'usd',
+                days: '7',
+                precision: '0'
+
+            }
+        })
+        const chartData = chartResult.data
         const data = result.data
+
         res.render('index.ejs',{
             content: data[0]
         })
     } catch(error){
-        console.log(error)
+        console.log(error.message)
         res.status(404).send("some thing went wrong")
     }  
 })
