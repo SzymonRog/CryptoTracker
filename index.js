@@ -45,9 +45,11 @@ app.get("/crypto", async (req,res) =>{
         })
         const chartData = chartResult.data
         const data = result.data
+        console.log(chartData.prices)
 
         res.render('index.ejs',{
-            content: data[0]
+            content: data[0],
+            prices: chartData.prices
         })
     } catch(error){
         console.log(error.message)

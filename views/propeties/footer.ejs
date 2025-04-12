@@ -9,5 +9,107 @@
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
     <script src="scripts/script.js"></script>
+    <% if(locals.prices !== undefined){ %>
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('myChart');
+            if (ctx) {
+                const rawData = <%- JSON.stringify(prices) %>;
+                const labels = rawData.map(item => 
+                    new Date(item[0]).toLocaleDateString("pl-PL", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }));
+        
+                const data = rawData.map(item => item[1]);
+        
+                new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Cena (USD)',
+                    data: data,
+                    borderColor: '#00d1b2',  // Crypto-like teal for the line
+                    backgroundColor: 'rgba(0, 209, 178, 0.2)',  // Subtle teal fill
+                    tension: 0.3,  // Smooth the curve
+                    pointRadius: 0,  // No points for a cleaner look
+                    fill: true,  // Fill the area below the line
+                    borderWidth: 2,  // Line thickness
+                    cubicInterpolationMode: 'monotone', // Smooth line interpolation
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,  // Remove the legend (crypto charts usually don't show it)
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Dark tooltip for contrast
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                // Format the tooltip with price and date
+                                const date = new Date(tooltipItem.label);
+                                return `${tooltipItem.raw} USD on ${date.toLocaleString()}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        ticks: {
+                            color: '#888',  // Light color for x-axis ticks
+                            maxRotation: 45,  // Slight rotation for better readability of date labels
+                            autoSkip: true,  // Automatically skip labels when too crowded
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',  // Very subtle grid lines
+                            borderColor: '#333'  // Dark border around the chart area
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#888',  // Light color for y-axis ticks
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',  // Subtle grid for modern look
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        tension: 0.4,  // Increase the tension for smoother lines
+                        borderCapStyle: 'round',  // Rounded edges for the line
+                        borderJoinStyle: 'round'  // Rounded joins to prevent sharp edges
+                    },
+                    point: {
+                        radius: 0  // Remove points to keep it clean
+                    }
+                },
+                layout: {
+                    padding: {
+                        top: 10,
+                        left: 10,
+                        right: 10,
+                        bottom: 10
+                    }
+                },
+                // Adding background gradient to the chart for a more professional look
+                backgroundColor: 'rgba(15, 16, 18, 1)',  // Dark background for the whole chart
+            }
+        });
+            }
+            });
+        </script>
+      <% } %>
     </body>
 </html>
