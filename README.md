@@ -25,7 +25,7 @@ Before you begin, make sure you have the following installed:
 1. Clone the repository and navigate to the project folder:
 
 ```bash
-git clone https://github.com/your-user/cryptotracker.git
+git clone https://github.com/SzymonRog/CryptoTracker.git
 cd cryptotracker
 ```
 
