@@ -1,6 +1,7 @@
 import express from "express"
 import axios from "axios"
 import bodyParser from "body-parser"
+import cors from "cors"
 
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(cors());
 
 
 app.get("/",(req,res)=>{
@@ -45,7 +47,7 @@ app.get("/crypto", async (req,res) =>{
         })
         const chartData = chartResult.data
         const data = result.data
-        console.log(chartData.prices)
+        
 
         res.render('index.ejs',{
             content: data[0],

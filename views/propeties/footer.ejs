@@ -111,5 +111,29 @@
             });
         </script>
       <% } %>
+    <% if (locals.content !== undefined){%>
+        <script>
+            $(document).ready(function () {
+                    
+                const priceChange = <%- locals.content.price_change_24h %>;
+                console.log(priceChange)
+                const $svg = $('.lucide');
+                
+                let arrowPath, arrowColor;
+                
+                if (priceChange >= 0) {
+                    arrowPath = '<path d="M7 17 17 7"/><path d="M17 17V7H7"/>';
+                    arrowColor = '#10BBBB'; // zielonkawy
+                } else {
+                    arrowPath = '<path d="m7 7 10 10"/><path d="M17 7v10H7"/>';
+                    arrowColor = '#EF4444'; // czerwony
+                }
+                
+                $svg.html(arrowPath).attr('stroke', arrowColor);
+                }
+            );
+        </script>
+    <% } %>
+      
     </body>
 </html>
