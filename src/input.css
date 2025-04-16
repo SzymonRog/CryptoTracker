@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.pressed{
+.pressedLight{
     background-color: #E5E7EB;
+}
+.pressedDark{
+    background-color: #4B5563;
 }
